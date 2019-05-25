@@ -12,6 +12,8 @@ https://www.cnblogs.com/-10086/p/5317524.html
 [zabbix understand](https://hackernoon.com/understanding-zabbix-f2a83eeb1221) 
 [zabbix download](https://www.zabbix.com/download?zabbix=4.2&os_distribution=ubuntu&os_version=16.04_xenial&db=mysql)  
 [zabbix config](https://www.whatled.com/post-1940.html)  
+[zabbix pyora](http://bicofino.io/blog/2013/12/09/monitoring-oracle-with-zabbix/)  
+
 
 ```
 # wget http://dev.mysql.com/get/mysql-apt-config_0.2.1-1debian7_all.deb
