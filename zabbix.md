@@ -15,4 +15,7 @@ https://www.cnblogs.com/-10086/p/5317524.html
 # dpkg -i mysql-apt-config_0.2.1-1debian7_all.deb  //安装时选1，使用5.6版本。
 # apt-get update
 # apt-get install mysql-server
+
+sudo cp  /etc/mysql/my.cnf /etc/mysql/mysql.cnf
+
 ```
