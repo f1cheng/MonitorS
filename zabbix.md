@@ -9,7 +9,8 @@ https://www.cnblogs.com/-10086/p/5317524.html
 [remove ](https://www.cnblogs.com/nuomin/p/8023619.html)  
 [zabbix db](https://www.cnblogs.com/irockcode/p/6796769.html)  
 [zabbix config](https://blog.csdn.net/fishmai/article/details/51849818)  
-[zabbix understand](https://hackernoon.com/understanding-zabbix-f2a83eeb1221)  
+[zabbix understand](https://hackernoon.com/understanding-zabbix-f2a83eeb1221) 
+[zabbix download](https://www.zabbix.com/download?zabbix=4.2&os_distribution=ubuntu&os_version=16.04_xenial&db=mysql)  
 
 ```
 # wget http://dev.mysql.com/get/mysql-apt-config_0.2.1-1debian7_all.deb
