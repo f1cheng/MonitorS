@@ -3,6 +3,7 @@
 https://www.cnblogs.com/-10086/p/5317524.html
 
 ```
+[remove mysql](https://liyonghui160com.iteye.com/blog/2175693)
 [zabbix ubuntu](https://www.cnblogs.com/-10086/p/5317524.html)  
 [zabbix ubuntu2](https://tecadmin.net/install-zabbix-on-ubuntu/)  
 [zabbix db](https://www.cnblogs.com/irockcode/p/6796769.html)  
