@@ -57,6 +57,17 @@ vi /etc/httpd/conf/httpd.conf
 [root@cfBareos cf]# systemctl restart httpd
 
 
+==How public ip be used by web access:
+[root@cfBareos cf]# wget http://118.31.109.239/zabbix/setup.php
+--2019-05-26 21:26:34--  http://118.31.109.239/zabbix/setup.php
+Connecting to 118.31.109.239:80... ^C
+[root@cfBareos cf]# wget http://172.16.111.55/zabbix/setup.php
+--2019-05-26 21:27:05--  http://172.16.111.55/zabbix/setup.php
+Connecting to 172.16.111.55:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2367 (2.3K) [text/html]
+Saving to: ‘setup.php.1’
+
 
 
 ```
