@@ -68,6 +68,6 @@ HTTP request sent, awaiting response... 200 OK
 Length: 2367 (2.3K) [text/html]
 Saving to: ‘setup.php.1’
 
-
+http://118.31.109.239/index.html
 
 ```
