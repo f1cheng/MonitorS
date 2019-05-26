@@ -24,3 +24,7 @@ https://www.cnblogs.com/-10086/p/5317524.html
 sudo cp  /etc/mysql/my.cnf /etc/mysql/mysql.cnf
 
 ```
+## install zabbix
+```
+[refer](https://www.cnblogs.com/tijun/p/8676915.html)
+```
