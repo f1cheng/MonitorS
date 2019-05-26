@@ -27,4 +27,36 @@ sudo cp  /etc/mysql/my.cnf /etc/mysql/mysql.cnf
 ## install zabbix
 ```
 [refer](https://www.cnblogs.com/tijun/p/8676915.html)
+
+zcat /usr/share/doc/zabbix-server-mysql-3.4.7/create.sql.gz | mysql -uzabbix -pzabbix zabbix
+/usr/share/doc/zabbix-server-mysql-3.4.15/create.sql.gz
+zcat /usr/share/doc/zabbix-server-mysql-3.4.15/create.sql.gz | mysql -uzabbix -pzabbix zabbix
+
+sed -i.ori '20a php_value date.timezone Asia/Shanghai' /etc/httpd/conf.d/zabbix.conf
+systemctl enable zabbix-server.service
+
+vi /etc/zabbix/zabbix_agentd.conf
+#Server=127.0.0.1
+#Server=118.31.109.239
+Server=172.16.111.55
+
+
+http://118.31.109.239/zabbix/setup.php
+172.16.111.55
+
+vi /etc/httpd/conf/httpd.conf
+6 ServerName 118.31.109.239:80
+172.16.111.55---internal ip
+[root@cfBareos cf]# systemctl stop httpd
+[root@cfBareos cf]# systemctl start httpd
+
+vi /etc/httpd/conf/httpd.conf 
+
+[root@cfBareos cf]# systemctl restart zabbix-server
+[root@cfBareos cf]# systemctl restart zabbix-agent
+[root@cfBareos cf]# systemctl restart httpd
+
+
+
+
 ```
