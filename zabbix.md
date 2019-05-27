@@ -68,6 +68,26 @@ HTTP request sent, awaiting response... 200 OK
 Length: 2367 (2.3K) [text/html]
 Saving to: ‘setup.php.1’
 
-http://118.31.109.239/index.html
+==solve to set in aliyun, for ingress 80 port:
+允许	自定义 TCP	
+80/80	IPv4地址段访问
+
+http://118.31.109.239/
+restart httpd, zabbix-server, zabbix-agent:
+http://118.31.109.239/zabbix/setup.php
+
+[root@cfBareos ~]# netstat -tupl
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:mysql           0.0.0.0:*               LISTEN      4969/mysqld         
+tcp        0      0 0.0.0.0:http            0.0.0.0:*               LISTEN      29780/httpd         
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN      3184/sshd           
+tcp        0      0 0.0.0.0:zabbix-agent    0.0.0.0:*               LISTEN      29758/zabbix_agentd 
+tcp        0      0 0.0.0.0:zabbix-trapper  0.0.0.0:*               LISTEN      29684/zabbix_server 
+tcp6       0      0 [::]:zabbix-agent       [::]:*                  LISTEN      29758/zabbix_agentd 
+tcp6       0      0 [::]:zabbix-trapper     [::]:*                  LISTEN      29684/zabbix_server 
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                           2739/dhclient       
+udp        0      0 localhost:323           0.0.0.0:*                           1990/chronyd        
+udp6       0      0 localhost:323           [::]:*                              1990/chronyd  
 
 ```
