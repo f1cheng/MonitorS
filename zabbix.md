@@ -90,4 +90,8 @@ udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                           
 udp        0      0 localhost:323           0.0.0.0:*                           1990/chronyd        
 udp6       0      0 localhost:323           [::]:*                              1990/chronyd  
 
+web login:
+username：Admin
+pwd：zabbix
+
 ```
