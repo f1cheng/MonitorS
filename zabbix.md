@@ -75,6 +75,7 @@ Saving to: ‘setup.php.1’
 http://118.31.109.239/
 restart httpd, zabbix-server, zabbix-agent:
 http://118.31.109.239/zabbix/setup.php
+http://118.31.109.239/zabbix/
 
 [root@cfBareos ~]# netstat -tupl
 Active Internet connections (only servers)
