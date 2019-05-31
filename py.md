@@ -1,4 +1,4 @@
-## env
+## seperate py env for version 2 and 3
 ```
 virtualenv -p /usr/bin/python2 --no-site-packages env2.7
 source env2.7/bin/activate
@@ -10,6 +10,8 @@ virtualenv -p /usr/bin/python3 --no-site-packages env3.7
 source env3.7/bin/activate
 deactivate
 ```
+
+## coding
 
 ```python
 #!/usr/bin/env python
@@ -72,7 +74,9 @@ if __name__ == "__main__":
     main()
 
 ```
-```output
+
+## output
+```
 (env3.7) [root@cfBareos Pyora]# python 3.py --username j --password a review_status fred!
 raw fun: __call__
 raw fun: __class__
