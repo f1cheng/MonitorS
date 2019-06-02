@@ -46,3 +46,7 @@ requests
             res_str = res.read().decode('utf-8')
             res_json = json.loads(res_str)
 ```
+## how user.login..???
+```
+self.user.login(user=user, password=password)??
+```
