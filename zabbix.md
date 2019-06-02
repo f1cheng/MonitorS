@@ -96,3 +96,17 @@ username：Admin
 pwd：zabbix
 
 ```
+## zabbix config test
+```
+1 yum install zabbix-get(/usr/bin/zabbix_get)
+2 /etc/zabbix/zabbix_agentd.conf
+:
+UserParameter=mysql.p,mysqladmin -h localhost -P 3306 -u zabbix -pzabbix ping | grep -c alive
+3 systemctl restart zabbix-agent
+4. 
+[root@cfBareos ~]# zabbix_get -s 172.16.111.55 -k mysql.p
+1
+[root@cfBareos ~]# 
+
+
+```
