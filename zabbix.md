@@ -108,5 +108,21 @@ UserParameter=mysql.p,mysqladmin -h localhost -P 3306 -u zabbix -pzabbix ping | 
 1
 [root@cfBareos ~]# 
 
+OR
+with:
+UserParameter=mysql.p[*],mysqladmin -h localhost -P 3306 -u zabbix -pzabbix ping | grep -c $1
+
+
+[root@cfBareos ~]# zabbix_get -s 172.16.111.55 -k mysql.p["alive"]
+1
+[root@cfBareos ~]# zabbix_get -s 172.16.111.55 -k mysql.p['alive']
+1
+[root@cfBareos ~]# zabbix_get -s 172.16.111.55 -k mysql.p
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
+
+[root@cfBareos ~]# zabbix_get -s 172.16.111.55 -k mysql.p[1,alive,]
+0
+
 
 ```
