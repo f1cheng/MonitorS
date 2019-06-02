@@ -121,5 +121,91 @@ Try 'grep --help' for more information.
 [root@cfBareos ~]# zabbix_get -s 172.16.111.55 -k mysql.p[1,alive,]
 0
 
+===
+zabbix_get -s 172.16.111.55 -p 10050 -k "system.uptime"
+mysql -uzabbix -pzabbix
+MariaDB [zabbix]> show databases;
+MariaDB [zabbix]> use zabbix
+Database changed
+MariaDB [zabbix]> desc hosts;
+
+MariaDB [zabbix]> select * from hosts where host='Zabbix server';
++--------+--------------+---------------+--------+---------------+-------+-----------+-------------+------------+---------------+----------------+---------------+---------------+--------------------+----------------+--------------------+----------------+---------------+--------------------+------------------+------------------+------------------+------------------+------------+------------+-------------------+---------------+-----------------+-----------+----------------+-------+------------+-------------+-------------+------------+------------+-------------+------------------+---------+
+| hostid | proxy_hostid | host          | status | disable_until | error | available | errors_from | lastaccess | ipmi_authtype | ipmi_privilege | ipmi_username | ipmi_password | ipmi_disable_until | ipmi_available | snmp_disable_until | snmp_available | maintenanceid | maintenance_status | maintenance_type | maintenance_from | ipmi_errors_from | snmp_errors_from | ipmi_error | snmp_error | jmx_disable_until | jmx_available | jmx_errors_from | jmx_error | name           | flags | templateid | description | tls_connect | tls_accept | tls_issuer | tls_subject | tls_psk_identity | tls_psk |
++--------+--------------+---------------+--------+---------------+-------+-----------+-------------+------------+---------------+----------------+---------------+---------------+--------------------+----------------+--------------------+----------------+---------------+--------------------+------------------+------------------+------------------+------------------+------------+------------+-------------------+---------------+-----------------+-----------+----------------+-------+------------+-------------+-------------+------------+------------+-------------+------------------+---------+
+|  10084 |         NULL | Zabbix server |      0 |             0 |       |         1 |           0 |          0 |            -1 |              2 |               |               |                  0 |              0 |                  0 |              0 |          NULL |                  0 |                0 |                0 |                0 |                0 |            |            |                 0 |             0 |               0 |           | Zabbix_my_name |     0 |       NULL |             |           1 |          1 |            |             |                  |         |
++--------+--------------+---------------+--------+---------------+-------+-----------+-------------+------------+---------------+----------------+---------------+---------------+--------------------+----------------+--------------------+----------------+---------------+--------------------+------------------+------------------+------------------+------------------+------------+------------+-------------------+---------------+-----------------+-----------+----------------+-------+------------+-------------+-------------+------------+------------+-------------+------------------+---------+
+1 row in set (0.00 sec)
+
+
+MariaDB [zabbix]> select name from hosts where host='Zabbix server';
++----------------+
+| name           |
++----------------+
+| Zabbix_my_name |
++----------------+
+1 row in set (0.00 sec)
+
+MariaDB [zabbix]> 
+
+MariaDB [zabbix]> desc items;
++-----------------------+---------------------+------+-----+---------+-------+
+| Field                 | Type                | Null | Key | Default | Extra |
++-----------------------+---------------------+------+-----+---------+-------+
+| itemid                | bigint(20) unsigned | NO   | PRI | NULL    |       |
+| type                  | int(11)             | NO   |     | 0       |       |
+| snmp_community        | varchar(64)         | NO   |     |         |       |
+| snmp_oid              | varchar(512)        | NO   |     |         |       |
+| hostid                | bigint(20) unsigned | NO   | MUL | NULL    |       |
+| name                  | varchar(255)        | NO   |     |         |       |
+| key_                  | varchar(255)        | NO   |     |         |       |
+| delay                 | varchar(1024)       | NO   |     | 0       |       |
+| history               | varchar(255)        | NO   |     | 90d     |       |
+| trends                | varchar(255)        | NO   |     | 365d    |       |
+| status                | int(11)             | NO   | MUL | 0       |       |
+| value_type            | int(11)             | NO   |     | 0       |       |
+| trapper_hosts         | varchar(255)        | NO   |     |         |       |
+| units                 | varchar(255)        | NO   |     |         |       |
+| snmpv3_securityname   | varchar(64)         | NO   |     |         |       |
+| snmpv3_securitylevel  | int(11)             | NO   |     | 0       |       |
+| snmpv3_authpassphrase | varchar(64)         | NO   |     |         |       |
+| snmpv3_privpassphrase | varchar(64)         | NO   |     |         |       |
+| formula               | varchar(255)        | NO   |     |         |       |
+| error                 | varchar(2048)       | NO   |     |         |       |
+| lastlogsize           | bigint(20) unsigned | NO   |     | 0       |       |
+| logtimefmt            | varchar(64)         | NO   |     |         |       |
+| templateid            | bigint(20) unsigned | YES  | MUL | NULL    |       |
+| valuemapid            | bigint(20) unsigned | YES  | MUL | NULL    |       |
+| params                | text                | NO   |     | NULL    |       |
+| ipmi_sensor           | varchar(128)        | NO   |     |         |       |
+| authtype              | int(11)             | NO   |     | 0       |       |
+| username              | varchar(64)         | NO   |     |         |       |
+| password              | varchar(64)         | NO   |     |         |       |
+| publickey             | varchar(64)         | NO   |     |         |       |
+| privatekey            | varchar(64)         | NO   |     |         |       |
+| mtime                 | int(11)             | NO   |     | 0       |       |
+| flags                 | int(11)             | NO   |     | 0       |       |
+| interfaceid           | bigint(20) unsigned | YES  | MUL | NULL    |       |
+| port                  | varchar(64)         | NO   |     |         |       |
+| description           | text                | NO   |     | NULL    |       |
+| inventory_link        | int(11)             | NO   |     | 0       |       |
+| lifetime              | varchar(255)        | NO   |     | 30d     |       |
+| snmpv3_authprotocol   | int(11)             | NO   |     | 0       |       |
+| snmpv3_privprotocol   | int(11)             | NO   |     | 0       |       |
+| state                 | int(11)             | NO   |     | 0       |       |
+| snmpv3_contextname    | varchar(255)        | NO   |     |         |       |
+| evaltype              | int(11)             | NO   |     | 0       |       |
+| jmx_endpoint          | varchar(255)        | NO   |     |         |       |
+| master_itemid         | bigint(20) unsigned | YES  | MUL | NULL    |       |
++-----------------------+---------------------+------+-----+---------+-------+
+45 rows in set (0.00 sec)
+
+MariaDB [zabbix]> select * from items where hostid=10084;
++--------+------+----------------+----------+--------+-----------+----------------+-------+---------+--------+--------+------------+---------------+-------+---------------------+----------------------+-----------------------+-----------------------+---------+-------+-------------+------------+------------+------------+--------+-------------+----------+----------+----------+-----------+------------+-------+-------+-------------+------+-------------+----------------+----------+---------------------+---------------------+-------+--------------------+----------+--------------+---------------+
+| itemid | type | snmp_community | snmp_oid | hostid | name      | key_           | delay | history | trends | status | value_type | trapper_hosts | units | snmpv3_securityname | snmpv3_securitylevel | snmpv3_authpassphrase | snmpv3_privpassphrase | formula | error | lastlogsize | logtimefmt | templateid | valuemapid | params | ipmi_sensor | authtype | username | password | publickey | privatekey | mtime | flags | interfaceid | port | description | inventory_link | lifetime | snmpv3_authprotocol | snmpv3_privprotocol | state | snmpv3_contextname | evaltype | jmx_endpoint | master_itemid |
++--------+------+----------------+----------+--------+-----------+----------------+-------+---------+--------+--------+------------+---------------+-------+---------------------+----------------------+-----------------------+-----------------------+---------+-------+-------------+------------+------------+------------+--------+-------------+----------+----------+----------+-----------+------------+-------+-------+-------------+------+-------------+----------------+----------+---------------------+---------------------+-------+--------------------+----------+--------------+---------------+
+|  28250 |    0 |                |          |  10084 | mysqlping | mysql.p[alive] | 30s   | 90d     | 365d   |      0 |          3 |               |       |                     |                    0 |                       |                       |         |       |           0 |            |       NULL |       NULL |        |             |        0 |          |          |           |            |     0 |     0 |           1 |      |             |              0 | 30d      |                   0 |                   0 |     0 |                    |        0 |              |          NULL |
++--------+------+----------------+----------+--------+-----------+----------------+-------+---------+--------+--------+------------+---------------+-------+---------------------+----------------------+-----------------------+-----------------------+---------+-------+-------------+------------+------------+------------+--------+-------------+----------+----------+----------+-----------+------------+-------+-------+-------------+------+-------------+----------------+----------+---------------------+---------------------+-------+--------------------+----------+--------------+---------------+
+1 row in set (0.00 sec)
 
 ```
