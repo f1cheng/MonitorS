@@ -48,5 +48,21 @@ requests
 ```
 ## how user.login..???
 ```
-self.user.login(user=user, password=password)??
+self.user.login(user=user, password=password)??no
+=>
+#auth user and password 
+#用户认证信息的部分，最终的目的是得到一个SESSIONID
+#这里是生成一个json格式的数据，用户名和密码
+auth_data = json.dumps(
+        {
+            "jsonrpc":"2.0",
+            "method":"user.login",
+            "params":
+                    {
+                        "user":zabbix_user,
+                        "password":zabbix_pass
+                    },
+            "id":0
+        }) 
+request = urllib2.Request(zabbix_url,auth_data) ...
 ```
