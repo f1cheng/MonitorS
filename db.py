@@ -12,4 +12,9 @@ result=`${MYSQL_CONN} status|cut -f2 -d":"|cut -f1 -d"T"`
 echo $result
 
 https://www.cnblogs.com/shenjianyu/p/6627843.html
+
+Centos7 安装Oracle11g Express Edition
+https://www.cnblogs.com/jnba/p/10647984.html
+https://www.jianshu.com/p/225518ba32b5
+   
 ```
