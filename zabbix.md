@@ -106,6 +106,19 @@ UserParameter=mysql.p,mysqladmin -h localhost -P 3306 -u zabbix -pzabbix ping | 
 4. 
 [root@cfBareos ~]# zabbix_get -s 172.16.111.55 -k mysql.p
 1
+
+---
+[root@cfBareos zabbix]# /home/cf/code/mysql_query.py 'QPS'
+3014175
+UserParameter=mysql.query[*],/home/cf/code/mysql_query.py $1
+systemctl restart zabbix-agent.service
+zabbix_get -s 172.16.111.55 -k mysql.query['QPS']
+[root@cfBareos zabbix]# zabbix_get -s 172.16.111.55 -k mysql.query['QPS']
+3014554
+[root@cfBareos zabbix]# zabbix_get -s 172.16.111.55 -k mysql.query['QPS']
+3014592
+----
+
 [root@cfBareos ~]# 
 
 OR with:
