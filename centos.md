@@ -428,4 +428,9 @@ DPI-1047: Cannot locate a 64-bit Oracle Client library: "libclntsh.so: cannot op
 [root@cfBareos ld.so.conf.d]# 
 
 
+[root@cfBareos ld.so.conf.d]# /home/cf/project/pyenv/github/pyora/Pyora/pyora.py --username zabbix --password zabbix --address cfBareos --database XE version
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+
+
 ```
