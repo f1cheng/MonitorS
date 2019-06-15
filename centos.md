@@ -47,3 +47,18 @@ pip3 install --upgrade pip
 pip 19.1.1 from /usr/local/python3.7/lib/python3.7/site-packages/pip (python 3.7)
 python3 -m pip install jupyter
 ```
+
+## oracle
+```
+tnsnames.ora
+listener.ora
+lsnrctl status
+lsnrctl start ： 启动监听器
+lsnrctl stop ： 关闭
+system默认:manager
+sys默认:change_on_install
+sqlplus /nolog
+SQL> connect sys/密码 as sysdba
+
+
+```
