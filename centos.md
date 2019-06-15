@@ -50,7 +50,18 @@ python3 -m pip install jupyter
 ## oracle install
 ```
 yum install libaio bc flex
+free -m:看内存占用
+[root@cfBareos download]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:            991         228          79           1         682         603
+Swap:             0           0           0
+[root@cfBareos download]# 
 
+swap设置成与内存大小相同即可
+
+
+default:
+sid=XE
 ```
 
 ## oracle
