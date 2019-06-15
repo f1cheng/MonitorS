@@ -47,6 +47,11 @@ pip3 install --upgrade pip
 pip 19.1.1 from /usr/local/python3.7/lib/python3.7/site-packages/pip (python 3.7)
 python3 -m pip install jupyter
 ```
+## oracle install
+```
+yum install libaio bc flex
+
+```
 
 ## oracle
 ```
