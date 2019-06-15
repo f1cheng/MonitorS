@@ -435,7 +435,13 @@ Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
 
 ```
 ```
-solved==
+===issue==
+[root@cfBareos ld.so.conf.d]# zabbix_get -s cfBareos -p 10050 -k oracle.query[zabbix,zabbix,cfBareos,XE,dbfilesize]
+0
+DPI-1047: Cannot locate a 64-bit Oracle Client library: "libclntsh.so: cannot open shared object file: No such file or directory". See https://oracle.github.io/odpi/doc/installation.html#linux for help
+[root@cfBareos ld.so.conf.d]# 
+
+===solved==
 [root@cfBareos ~]# cd /home/cf/download/Oracleclient/
 [root@cfBareos Oracleclient]# ls
 oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
