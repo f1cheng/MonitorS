@@ -410,6 +410,15 @@ total 32
 -rwxr-xr-x 1 oracle dba 21433 Jun 16 00:37 pyora.py
 drwxr-xr-x 2 oracle dba  4096 Jun 16 00:37 zabbix-template
 (env2.7) [root@cfBareos Pyora]# 
+
+(env2.7) [root@cfBareos Pyora]# python pyora.py --username zabbix --password zabbix --address cfBareos --database XE activeusercount
+0
+(env2.7) [root@cfBareos Pyora]# python pyora.py --username zabbix --password zabbix --address cfBareos --database XE version
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+(env2.7) [root@cfBareos Pyora]# python pyora.py --username zabbix --password zabbix --address cfBareos --database XE dbfilesize
+1179648000
+(env2.7) [root@cfBareos Pyora]# 
+
 =============================================================
 
 
