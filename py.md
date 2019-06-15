@@ -119,4 +119,11 @@ args: Namespace(argnames=['engineer'], engineer='fred!', func=<bound method Revi
 final------
 
 ```
+## py to oracle db
+```
+(env2.7) [root@cfBareos Pyora]# python pyora.py --username a --password secret --address 127.0.0.1 --database DB tablespace SYSTEM
+0
+DPI-1047: Cannot locate a 64-bit Oracle Client library: "libclntsh.so: cannot open shared object file: No such file or directory". See https://oracle.github.io/odpi/doc/installation.html#linux for help
+(env2.7) [root@cfBareos Pyora]# 
 
+```
