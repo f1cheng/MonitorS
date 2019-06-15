@@ -1,5 +1,7 @@
 ##mysql
 ```
+https://rdsnext.console.aliyun.com/#/detail/rm-wz940521ynli6ls3y/basicInfo?region=cn-shenzhen
+
 [root@cfBareos ~]# mysql -h rm-wz940521ynli6ls3ywo.mysql.rds.aliyuncs.com -P 3306 -u root -pCxxx6xx1
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MySQL connection id is 26947
