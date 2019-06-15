@@ -434,3 +434,54 @@ Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
 
 
 ```
+```
+solved==
+[root@cfBareos ~]# cd /home/cf/download/Oracleclient/
+[root@cfBareos Oracleclient]# ls
+oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
+
+
+rpm -ivh oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
+
+create soft link:libclntsh.so -> libclntsh.so.11.1
+[root@cfBareos Oracleclient]# ls -lrt /usr/lib/oracle/11.2/client64/lib
+total 183256
+-rw-r--r-- 1 root root 118738042 Aug 25  2013 libociei.so
+-rw-r--r-- 1 root root   7996693 Aug 25  2013 libnnz11.so
+-rw-r--r-- 1 root root   1973074 Aug 25  2013 libocci.so.11.1
+-rw-r--r-- 1 root root  53865194 Aug 25  2013 libclntsh.so.11.1
+-rw-r--r-- 1 root root     66779 Aug 25  2013 xstreams.jar
+-rw-r--r-- 1 root root   2739616 Aug 25  2013 ojdbc6.jar
+-rw-r--r-- 1 root root   2091135 Aug 25  2013 ojdbc5.jar
+-rw-r--r-- 1 root root    164942 Aug 25  2013 libocijdbc11.so
+lrwxrwxrwx 1 root root        17 Jun 16 03:13 libclntsh.so -> libclntsh.so.11.1
+
+[root@cfBareos Oracleclient]# /home/cf/project/pyenv/github/pyora/Pyora/pyora.py --username zabbix --password zabbix --address cfBareos --database XE dbfilesize
+('abc', '/usr/lib/oracle/11.2/client64/lib:/lib:/usr/lib')
+('path', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin')
+('abcLD', '/usr/lib/oracle/11.2/client64/lib:/lib:/usr/lib')
+1179648000
+
+
+
+[root@cfBareos ~]# more /etc/ld.so.conf.d/oracle-instantclient.conf
+/usr/lib/oracle/11.2/client64/lib
+[root@cfBareos ~]# ldconfig
+[root@cfBareos ~]# zabbix_get -s cfBareos -p 10050 -k oracle.query[zabbix,zabbix,cfBareos,XE,dbfilesize]
+('abc', None)
+('path', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin')
+('abcLD', None)
+1179648000
+[root@cfBareos ~]# 
+
+[root@cfBareos Oracleclient]# vim /home/cf/project/pyenv/github/pyora/Pyora/pyora.py
+[root@cfBareos Oracleclient]# /home/cf/project/pyenv/github/pyora/Pyora/pyora.py --username zabbix --password zabbix --address cfBareos --database XE dbfilesize
+1179648000
+[root@cfBareos Oracleclient]# zabbix_get -s cfBareos -p 10050 -k oracle.query[zabbix,zabbix,cfBareos,XE,dbfilesize]
+1179648000
+[root@cfBareos Oracleclient]# 
+
+
+
+
+```
