@@ -351,3 +351,66 @@ grant select on dba_temp_files to zabbix;
 grant select on dba_free_space to zabbix;
 grant select on v_$system_event to zabbix;
 ```
+
+## execute pyora.py
+```
+
+To execute /home/cf/project/pyenv/github/pyora/Pyora/pyora.py
+
+=============================================================
+
+git clone https://github.com/bicofino/Pyora.git
+source ../../../env2.7/bin/activate
+
+ python pyora.py 
+usage: pyora.py [-h] [--username USERNAME] [--password PASSWORD]
+                [--address ADDRESS] [--database DATABASE] [--port PORT]
+                
+                {activeusercount,asm_volume_use,bufbusywaits,check_active,check_archive,commits,db_close,db_connect,dbfilesize,dbprllwrite,dbscattread,dbseqread,dbsize,dbsnglwrite,deadlocks,directread,directwrite,dsksortratio,enqueue,fra_use,freebufwaits,hparsratio,indexffs,lastapplarclog,lastarclog,latchfree,logfilesync,logonscurrent,logprllwrite,logswcompletion,netresv,netroundtrips,netsent,query_lock,query_redologs,query_rollbacks,query_sessions,query_sysmetrics,rcachehit,redowrites,rollbacks,show_asm_volumes,show_tablespaces,show_tablespaces_temp,show_users,tablespace,tablespace_abs,tablespace_temp,tblrowsscans,tblscans,uptime,user_status,version}
+                ...
+pyora.py: error: too few arguments
+
+
+
+python pyora.py --username zabbix --password zabbix --address 127.0.0.1 --database XE tablespace SYSTEM
+
+
+(env2.7) [root@cfBareos Pyora]# python pyora.py --username zabbix --password zabbix --address 127.0.0.1 --database XE tablespace SYSTEM
+0
+DPI-1047: Cannot locate a 64-bit Oracle Client library: "libclntsh.so: cannot open shared object file: No such file or directory". See https://oracle.github.io/odpi/doc/installation.html#linux for help
+
+
+
+cfBareos
+(env2.7) [root@cfBareos Pyora]# python pyora.py --username zabbix --password zabbix --address cfBareos --database XE tablespace SYSTEM
+0
+DPI-1047: Cannot locate a 64-bit Oracle Client library: "libclntsh.so: cannot open shared object file: No such file or directory". See https://oracle.github.io/odpi/doc/installation.html#linux for help
+
+please use oracle user login, then ok.
+(env2.7) [oracle@cfBareos Pyora]$ python pyora.py --username zabbix --password zabbix --address 127.0.0.1 --database XE tablespace SYSTEM
+59
+
+
+or added the env to root user's ~/.bash_profile:
+ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE
+ORACLE_HOME=$ORACLE_BASE/product/11.2.0/xe; export ORACLE_HOME
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib; export LD_LIBRARY_PATH
+
+(env2.7) [root@cfBareos Pyora]# source ~/.bash_profile 
+(env2.7) [root@cfBareos Pyora]# python pyora.py --username zabbix --password zabbix --address cfBareos --database XE tablespace SYSTEM
+59
+(env2.7) [root@cfBareos Pyora]# 
+
+
+(env2.7) [root@cfBareos Pyora]# pwd
+/home/cf/project/pyenv/github/pyora/Pyora
+(env2.7) [root@cfBareos Pyora]# ls -lrt
+total 32
+-rw-r--r-- 1 oracle dba  2899 Jun 16 00:37 README.md
+-rwxr-xr-x 1 oracle dba 21433 Jun 16 00:37 pyora.py
+drwxr-xr-x 2 oracle dba  4096 Jun 16 00:37 zabbix-template
+(env2.7) [root@cfBareos Pyora]# 
+=============================================================
+
+
+```
