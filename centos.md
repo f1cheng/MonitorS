@@ -304,3 +304,50 @@ SQL> connect sys/密码 as sysdba
 
 
 ```
+
+## create zabbix user in oracle db
+```
+sqlplus /nolog
+connect / as sysdba
+
+create user zabbix identified by "zabbix" default tablespace system temporary tablespace temp profile default account unlock;
+==current execute below:
+GRANT CONNECT TO ZABBIX;
+GRANT RESOURCE TO ZABBIX;
+ALTER USER ZABBIX DEFAULT ROLE ALL;
+GRANT SELECT ANY TABLE TO ZABBIX;
+GRANT CREATE SESSION TO ZABBIX;
+GRANT SELECT ANY DICTIONARY TO ZABBIX;
+GRANT UNLIMITED TABLESPACE TO ZABBIX;
+GRANT SELECT ANY DICTIONARY TO ZABBIX;
+GRANT SELECT ON V_$SESSION TO ZABBIX;
+GRANT SELECT ON V_$SYSTEM_EVENT TO ZABBIX;
+GRANT SELECT ON V_$EVENT_NAME TO ZABBIX;
+GRANT SELECT ON V_$RECOVERY_FILE_DEST TO ZABBIX;
+
+
+==not execute below yet:
+grant alter session to zabbix;
+grant create session to zabbix;
+grant connect to zabbix;
+alter user zabbix default role all;
+grant select on v_$instance to zabbix;
+grant select on dba_users to zabbix;
+grant select on v_$log_history to zabbix;
+grant select on v_$parameter to zabbix;
+grant select on sys.dba_audit_session to zabbix;
+grant select on v_$lock to zabbix;
+grant select on dba_registry to zabbix;
+grant select on v_$librarycache to zabbix;
+grant select on v_$sysstat to zabbix;
+grant select on v_$parameter to zabbix;
+grant select on v_$latch to zabbix;
+grant select on v_$pgastat to zabbix;
+grant select on v_$sgastat to zabbix;
+grant select on v_$librarycache to zabbix;
+grant select on v_$process to zabbix;
+grant select on dba_data_files to zabbix;
+grant select on dba_temp_files to zabbix;
+grant select on dba_free_space to zabbix;
+grant select on v_$system_event to zabbix;
+```
