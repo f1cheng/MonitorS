@@ -5,6 +5,7 @@ source env2.7/bin/activate
 deactivate
 pip install argparse
 pip install cx_Oracle
+(pip install cx-Oracle)
 
 virtualenv -p /usr/bin/python3 --no-site-packages env3.7
 source env3.7/bin/activate
