@@ -241,6 +241,53 @@ Service "XEXDB" has 1 instance(s).
 The command completed successfully
 
 
+[oracle@cfBareos ~]$ more /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora
+# listener.ora Network Configuration File:
+
+SID_LIST_LISTENER =
+  (SID_LIST =
+    (SID_DESC =
+      (SID_NAME = PLSExtProc)
+      (ORACLE_HOME = /u01/app/oracle/product/11.2.0/xe)
+      (PROGRAM = extproc)
+    )
+  )
+
+LISTENER =
+  (DESCRIPTION_LIST =
+    (DESCRIPTION =
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC_FOR_XE))
+      (ADDRESS = (PROTOCOL = TCP)(HOST = cfBareos)(PORT = 1521))
+    )
+  )
+
+DEFAULT_SERVICE_LISTENER = (XE)
+
+
+[oracle@cfBareos ~]$ more /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora 
+# tnsnames.ora Network Configuration File:
+
+XE =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = cfBareos)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+  )
+
+EXTPROC_CONNECTION_DATA =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC_FOR_XE))
+    )
+    (CONNECT_DATA =
+      (SID = PLSExtProc)
+      (PRESENTATION = RO)
+    )
+  )
+
+
 ```
 
 ## oracle
