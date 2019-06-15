@@ -63,6 +63,148 @@ swap设置成与内存大小相同即可
 default:
 sid=XE
 ```
+```
+groupadd oinstall
+groupadd dba
+useradd -m -g oinstall -G dba oracle
+id oracle
+passwd oracle
+->oracle
+
+
+mkdir -p /u01/app
+chown -R oracle:oinstall /u01/app
+chmod -R 775 /u01/app
+
+yum install libaio libaio-devel bc man net-tools -y
+
+
+---dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+(--1G swap is not enough, but 2G.
+Oracle Database 11g
+Express Edition requires 1982 MB of swap space. This system has 1023 MB
+of swap space
+)
+
+swapoff /swapfile
+rm -rf /swapfile
+
+dd if=/dev/zero of=/swapfile bs=1024 count=2197152
+mkswap /swapfile
+swapon /swapfile
+cp /etc/fstab /etc/fstab.backup_$(date +%N)
+echo '/swapfile swap swap defaults 0 0' >> /etc/fstab
+chown root:root /swapfile
+chmod 0600 /swapfile
+swapon -a
+swapon -s
+
+[root@cfBareos Disk1]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:            991         222          78           0         690         608
+Swap:          1023           0        1023
+[root@cfBareos Disk1]# 
+
+cd Disk1/
+rpm -ivh oracle-xe-11.2.0-1.0.x86_64.rpm
+[root@cfBareos Disk1]# rpm -ivh oracle-xe-11.2.0-1.0.x86_64.rpm
+Preparing...                          ################################# [100%]
+/var/tmp/rpm-tmp.y7MT5U: line 257: [: 18446744073692774399: integer expression expected
+/var/tmp/rpm-tmp.y7MT5U: line 271: [: 18446744073692774399: integer expression expected
+Updating / installing...
+   1:oracle-xe-11.2.0-1.0             ################################# [100%]
+Executing post-install steps...
+
+You must run '/etc/init.d/oracle-xe configure' as the root user to configure the database.
+
+
+password set as input: sys
+
+
+[root@cfBareos Disk1]# /etc/init.d/oracle-xe configure
+
+Oracle Database 11g Express Edition Configuration
+-------------------------------------------------
+This will configure on-boot properties of Oracle Database 11g Express 
+Edition.  The following questions will determine whether the database should 
+be starting upon system boot, the ports it will use, and the passwords that 
+will be used for database accounts.  Press <Enter> to accept the defaults. 
+Ctrl-C will abort.
+
+Specify the HTTP port that will be used for Oracle Application Express [8080]:
+
+Specify a port that will be used for the database listener [1521]:
+
+Specify a password to be used for database accounts.  Note that the same
+password will be used for SYS and SYSTEM.  Oracle recommends the use of 
+different passwords for each database account.  This can be done after 
+initial configuration:
+Confirm the password:
+
+Do you want Oracle Database 11g Express Edition to be started on boot (y/n) [y]:y^H^[[3~^H
+
+Invalid response: y
+Starting Oracle Net Listener...Done
+Configuring database...Done
+Starting Oracle Database 11g Express Edition instance...Done
+Installation completed successfully.
+[root@cfBareos Disk1]# 
+
+
+su - oracle
+
+修改.bash_profile.在其中添加如下内容：
+# Oracle Settings
+TMP=/tmp; export TMP
+TMPDIR=$TMP; export TMPDIR
+ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE
+ORACLE_HOME=$ORACLE_BASE/product/11.2.0/xe; export ORACLE_HOME
+ORACLE_SID=XE; export ORACLE_SID
+ORACLE_TERM=xterm; export ORACLE_TERM
+PATH=/usr/sbin:$PATH; export PATH
+PATH=$ORACLE_HOME/bin:$PATH; export PATH
+TNS_ADMIN=$ORACLE_HOME/network/admin
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib; export LD_LIBRARY_PATH
+CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLASSPATH
+
+sqlplus /nolog
+conn / as sysdba
+SQL> conn / as sysdba
+Connected.
+SQL> startup
+ORA-01081: cannot start already-running ORACLE - shut it down first
+SQL> show database;
+SP2-0158: unknown SHOW option "database"
+SQL> show;
+SQL> show db;
+SP2-0158: unknown SHOW option "db"
+SQL> 
+
+SQL> show user
+USER is "SYS"
+SQL> show parameter instance_name
+
+NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+instance_name			     string	 XE
+SQL> 
+
+
+SQL> select name from v$database;
+
+NAME
+---------
+XE
+
+
+SQL> select instance_name from v$instance;
+
+INSTANCE_NAME
+----------------
+XE
+
+
+```
 
 ## oracle
 ```
