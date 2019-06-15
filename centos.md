@@ -47,8 +47,11 @@ pip3 install --upgrade pip
 pip 19.1.1 from /usr/local/python3.7/lib/python3.7/site-packages/pip (python 3.7)
 python3 -m pip install jupyter
 ```
-## oracle install
+## oracle install(oracle 11g xe)
 ```
+download oracle-xe-11.2.0-1.0.x86_64 via oracle account 1849....@qq.com
+ftp to centos7 /home/cf/download/
+
 yum install libaio bc flex
 free -m:看内存占用
 [root@cfBareos download]# free -m
@@ -202,6 +205,40 @@ SQL> select instance_name from v$instance;
 INSTANCE_NAME
 ----------------
 XE
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+[oracle@cfBareos ~]$ lsnrctl status
+
+LSNRCTL for Linux: Version 11.2.0.2.0 - Production on 16-JUN-2019 00:18:38
+
+Copyright (c) 1991, 2011, Oracle.  All rights reserved.
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC_FOR_XE)))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 11.2.0.2.0 - Production
+Start Date                16-JUN-2019 00:05:40
+Uptime                    0 days 0 hr. 12 min. 58 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Default Service           XE
+Listener Parameter File   /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora
+Listener Log File         /u01/app/oracle/diag/tnslsnr/cfBareos/listener/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC_FOR_XE)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=cfBareos)(PORT=1521)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=cfBareos)(PORT=8080))(Presentation=HTTP)(Session=RAW))
+Services Summary...
+Service "PLSExtProc" has 1 instance(s).
+  Instance "PLSExtProc", status UNKNOWN, has 1 handler(s) for this service...
+Service "XE" has 1 instance(s).
+  Instance "XE", status READY, has 1 handler(s) for this service...
+Service "XEXDB" has 1 instance(s).
+  Instance "XE", status READY, has 1 handler(s) for this service...
+The command completed successfully
 
 
 ```
