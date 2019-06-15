@@ -420,6 +420,12 @@ Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
 (env2.7) [root@cfBareos Pyora]# 
 
 =============================================================
+UserParameter=oracle.query[*],python /home/cf/project/pyenv/github/pyora/Pyora/pyora.py --username $1 --password $2 --address $3 --database $4 $5
+
+[root@cfBareos ld.so.conf.d]# zabbix_get -s cfBareos -p 10050 -k oracle.query[zabbix,zabbix,cfBareos,XE,dbfilesize]
+0
+DPI-1047: Cannot locate a 64-bit Oracle Client library: "libclntsh.so: cannot open shared object file: No such file or directory". See https://oracle.github.io/odpi/doc/installation.html#linux for help
+[root@cfBareos ld.so.conf.d]# 
 
 
 ```
