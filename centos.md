@@ -420,6 +420,8 @@ Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
 (env2.7) [root@cfBareos Pyora]# 
 
 =============================================================
+/etc/zabbix/zabbix_agentd.conf
+
 UserParameter=oracle.query[*],python /home/cf/project/pyenv/github/pyora/Pyora/pyora.py --username $1 --password $2 --address $3 --database $4 $5
 
 [root@cfBareos ld.so.conf.d]# zabbix_get -s cfBareos -p 10050 -k oracle.query[zabbix,zabbix,cfBareos,XE,dbfilesize]
