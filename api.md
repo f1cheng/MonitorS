@@ -93,6 +93,8 @@ Content-Type: application/json
 
 ```
 ```
+[root@cfBareos test]# python m.py
+....
 06/20/19 20:33:24: 1211105280
 06/20/19 20:33:54: 1211105280
 [root@cfBareos test]# more m.py
@@ -105,7 +107,7 @@ from datetime import datetime
 import time
 
 # The hostname at which the Zabbix web interface is available
-ZABBIX_SERVER = 'http://118.31.109.239/zabbix'
+ZABBIX_SERVER = 'http://11x.x1.1xx.2xx/zabbix'
 
 zapi = ZabbixAPI(ZABBIX_SERVER)
 
