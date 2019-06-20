@@ -145,3 +145,24 @@ for point in history:
                             .strftime("%x %X"), point['value']))
 [root@cfBareos test]# 
 ```
+
+```
+[root@cfBareos test]# python tz1.py 
+great! name:attr user.login
+great! name:attr history.get
+('empty?', 480)
+great! name:attr host.get
+10084
+great! name:attr apiinfo.version
+3.4.15
+{u'jsonrpc': u'2.0', u'result': u'3.4.15', u'id': 4}
+great! name:attr host.get
+[{u'available': u'1', u'tls_connect': u'1', u'maintenance_type': u'0', u'ipmi_errors_from': u'0', u'ipmi_username': u'', u'snmp_disable_until': u'0', u'ipmi_authtype': u'-1', u'ipmi_disable_until': u'0', u'lastaccess': u'0', u'snmp_error': u'', u'tls_psk': u'', u'ipmi_privilege': u'2', u'jmx_error': u'', u'jmx_available': u'0', u'maintenanceid': u'0', u'snmp_available': u'0', u'tls_psk_identity': u'', u'status': u'0', u'description': u'', u'tls_accept': u'1', u'host': u'Zabbix server', u'disable_until': u'0', u'ipmi_password': u'', u'templateid': u'0', u'tls_issuer': u'', u'ipmi_available': u'0', u'maintenance_status': u'0', u'snmp_errors_from': u'0', u'ipmi_error': u'', u'proxy_hostid': u'0', u'hostid': u'10084', u'name': u'Zabbix_my_name', u'jmx_errors_from': u'0', u'jmx_disable_until': u'0', u'flags': u'0', u'error': u'', u'maintenance_from': u'0', u'tls_subject': u'', u'errors_from': u'0'}]
+====
+{u'jsonrpc': u'2.0', u'result': [{u'available': u'1', u'tls_connect': u'1', u'maintenance_type': u'0', u'ipmi_errors_from': u'0', u'ipmi_username': u'', u'snmp_disable_until': u'0', u'ipmi_authtype': u'-1', u'ipmi_disable_until': u'0', u'lastaccess': u'0', u'snmp_error': u'', u'tls_psk': u'', u'ipmi_privilege': u'2', u'jmx_error': u'', u'jmx_available': u'0', u'maintenanceid': u'0', u'snmp_available': u'0', u'tls_psk_identity': u'', u'status': u'0', u'description': u'', u'tls_accept': u'1', u'host': u'Zabbix server', u'disable_until': u'0', u'ipmi_password': u'', u'templateid': u'0', u'tls_issuer': u'', u'ipmi_available': u'0', u'maintenance_status': u'0', u'snmp_errors_from': u'0', u'ipmi_error': u'', u'proxy_hostid': u'0', u'hostid': u'10084', u'name': u'Zabbix_my_name', u'jmx_errors_from': u'0', u'jmx_disable_until': u'0', u'flags': u'0', u'error': u'', u'maintenance_from': u'0', u'tls_subject': u'', u'errors_from': u'0'}], u'id': 6}
+great! name:attr host.get
+('hostnames1:', [u'Zabbix server'])
+('hostnames2:', [u'Zabbix server'])
+[root@cfBareos test]# 
+
+```
