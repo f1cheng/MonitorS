@@ -67,6 +67,11 @@ default:
 sid=XE
 ```
 ```
+
+problem for su - oracle not login
+because of exit in /home/oracle/.bashrc
+remove 'exit'
+
 groupadd oinstall
 groupadd dba
 useradd -m -g oinstall -G dba oracle
