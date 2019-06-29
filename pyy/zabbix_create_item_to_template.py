@@ -564,4 +564,85 @@ print ('begin----create item to template')
 create_item_to_template()
 print ('end----')
 
+'''
 
+==1 create template:
+def create_template():
+    try:
+        print ('login')
+        token = zabbix_login()
+        print ('loginin')
+        data = json.dumps(
+            {
+
+             "jsonrpc": "2.0",
+
+ "method": "template.create",
+    "params": {
+        "host": "test template host bycf",------------------------------------------------create template, this is actual template name
+        "groups": {
+            "groupid": 1
+        },
+    },
+
+
+('post after', {u'jsonrpc': u'2.0', u'result': {u'templateids': [u'10255']}, u'id': 0})--------------templated id created.
+test template host bycf
+
+
+-after create template then host can get as below----------no below as no relation.
+curl -s -X POST -H 'Content-Type: application/json' -d '
+{
+    "jsonrpc": "2.0",
+    "method": "host.get",
+    "params": {
+            "output":["hostid","templated_hostsxxxxx"],
+            "templated_hosts":33,
+            "filter": 
+            {
+                "name":"test template host bycf"
+            }
+    },
+    "auth": "fdbb8f3e4626b014f6a1509a5f4a38f8",
+    "id": 1
+}' http://118.31.109.239/zabbix/api_jsonrpc.php | python -mjson.tool
+
+
+==2 create item to template:
+def create_item_to_template():
+    try:
+        print ('login')
+        token = zabbix_login()
+        print ('loginin')
+        data = json.dumps(
+            {
+
+             "jsonrpc": "2.0",
+             "method": "item.create",
+    "params": {
+ "name": 'cf-item-to-template-sucess',
+    "key_": 'cf-item-to-template-success',
+    "hostid": 10255,-----------------------------------------------------------template id(real template id)
+    "type": 0,
+    "value_type": 3,
+    "interfaceid": "",
+    "delay": "800s",
+
+    },
+
+
+begin----create item to template
+login
+loginin
+post before
+('post after', {u'jsonrpc': u'2.0', u'result': {u'itemids': [u'28267']}, u'id': 0})
+<Response [200]>
+finall
+end----
+[root@cfBareos post]# 
+
+so All templates/test template host bycfApplicationsItems 1TriggersGraphsScreensDiscovery rulesWeb scenarios
+
+So one item created into templated!!!!!
+
+'''
