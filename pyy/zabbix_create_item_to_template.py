@@ -564,6 +564,64 @@ print ('begin----create item to template')
 create_item_to_template()
 print ('end----')
 
+
+def create_host_to_template():
+    try:
+        print ('login')
+        token = zabbix_login()
+        print ('loginin')
+        data = json.dumps(
+            {
+             "jsonrpc": "2.0",
+             "method": "host.create",
+    "params": {
+        "host": "cfPy_Linux server",
+        "name": "vcfPy_Linux server",
+        "interfaces": [
+            {
+                "type": 1,
+                "main": 1,
+                "useip": 1,
+                "ip": "192.168.3.1",
+                "dns": "",
+                "port": "10050"
+            }
+        ],
+ "groups": [
+            {
+                "groupid": "1"
+            }
+        ],
+
+        "templates": [
+            {
+                "templateid": "10255"
+            }
+        ],
+    },
+             "auth": token,
+             "id": 0
+
+            })
+        print ('post before')
+        request = requests.post(zabbix_url, data=data, headers=headers)
+         
+        tt = json.loads(request.text)
+        print ('post after', tt)
+        print (request)
+        print ('request', token, request, request.txt)
+        #host_id = json.loads(request.text)['result']['hostids'][0]
+    except BaseException,e:
+        log('create_host: %s' %e)
+        return "error"
+    finally:
+        print ('finall')
+        #zabbix_logout(token)
+print ('begin----create host to template')
+create_host_to_template()
+print ('end----')
+
+
 '''
 
 ==1 create template:
@@ -644,5 +702,55 @@ end----
 so All templates/test template host bycfApplicationsItems 1TriggersGraphsScreensDiscovery rulesWeb scenarios
 
 So one item created into templated!!!!!
+
+==3 create host to template based on existing hostgroup(e.g 1)
+def create_host_to_template():
+    try:
+        print ('login')
+        token = zabbix_login()
+        print ('loginin')
+        data = json.dumps(
+            {
+             "jsonrpc": "2.0",
+             "method": "host.create",
+    "params": {
+        "host": "cfPy_Linux server",
+        "name": "vcfPy_Linux server",
+        "interfaces": [
+            {
+                "type": 1,
+                "main": 1,
+                "useip": 1,
+                "ip": "192.168.3.1",
+                "dns": "",
+                "port": "10050"
+            }
+        ],
+ "groups": [
+            {
+                "groupid": "1"
+            }
+        ],
+
+        "templates": [
+            {
+                "templateid": "10255"
+            }
+        ],
+    },
+             "auth": token,
+             "id": 0
+
+            })
+
+begin----create host to template
+login
+loginin
+post before
+('post after', {u'jsonrpc': u'2.0', u'result': {u'hostids': [u'10256']}, u'id': 0})---------------------real host created, hostid=10256.
+<Response [200]>
+finall
+end----
+[root@cfBareos post]# vim zabbix_create_item_to_template.py 
 
 '''
