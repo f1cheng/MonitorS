@@ -5,3 +5,9 @@ python pyora.py --username zabbix --password zabbix --address cfBareos --databas
 ```
 export PYTHONPATH=$PYTHONPATH:/home/cf/project/pydb/monitorDog/monitorDog
 ```
+3.
+```
+zabbix_get -s cfBareos -p 10050 -k oracle.query[zabbix,zabbix,cfBareos,XE,redowrites]
+17096
+
+```
